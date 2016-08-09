@@ -27,9 +27,10 @@ RUN apt-get update && apt-get install -y \
 	at-spi2-core \
 	&& cd /tmp \
 	&& locale-gen en_US.UTF-8   \
-	&& wget http://download.documentfoundation.org/libreoffice/stable/5.1.3/deb/x86_64/LibreOffice_5.1.3_Linux_x86-64_deb.tar.gz \
-	&& tar xvfz LibreOffice_5.1.3_Linux_x86-64_deb.tar.gz \
- 	&& cd LibreOffice_5.1.3.2_Linux_x86-64_deb/DEBS/ \
+	&& wget http://download.documentfoundation.org/libreoffice/stable/5.2.0/deb/x86_64/LibreOffice_5.2.0_Linux_x86-64_deb.tar.gz \
+	&& tar xvfz LibreOffice_5.2.0_Linux_x86-64_deb.tar.gz \
+    && ls -la \
+ 	&& cd LibreOffice_5.2.0.4_Linux_x86-64_deb/DEBS/ \
 	&& dpkg -i *.deb \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -37,4 +38,4 @@ RUN apt-get update && apt-get install -y \
 #ENV LANGUAGE en_US:en   
 #ENV LC_ALL en_US.UTF-8  
 
-ENTRYPOINT [ "libreoffice5.1" ]
+ENTRYPOINT [ "libreoffice5.2" ]
