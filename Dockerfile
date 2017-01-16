@@ -27,14 +27,24 @@ RUN apt-get update && apt-get install -y \
 	at-spi2-core \
 	&& cd /tmp \
 	&& locale-gen en_US.UTF-8   \
-	&& wget http://download.documentfoundation.org/libreoffice/stable/5.1.3/deb/x86_64/LibreOffice_5.1.3_Linux_x86-64_deb.tar.gz \
-	&& tar xvfz LibreOffice_5.1.3_Linux_x86-64_deb.tar.gz \
- 	&& cd LibreOffice_5.1.3.2_Linux_x86-64_deb/DEBS/ \
-	&& dpkg -i *.deb \
+	&& wget http://download.documentfoundation.org/libreoffice/stable/5.2.4/deb/x86_64/LibreOffice_5.2.4_Linux_x86-64_deb.tar.gz \
+	&& wget http://download.documentfoundation.org/libreoffice/stable/5.2.4/deb/x86_64/LibreOffice_5.2.4_Linux_x86-64_deb_helppack_es.tar.gz \
+	&& wget http://download.documentfoundation.org/libreoffice/stable/5.2.4/deb/x86_64/LibreOffice_5.2.4_Linux_x86-64_deb_langpack_es.tar.gz \
+	&& wget http://download.documentfoundation.org/libreoffice/stable/5.2.4/deb/x86_64/LibreOffice_5.2.4_Linux_x86-64_deb_sdk.tar.gz \    
+	&& tar xvfz LibreOffice_5.2.4_Linux_x86-64_deb.tar.gz  \
+	&& tar xvfz LibreOffice_5.2.4_Linux_x86-64_deb_helppack_es.tar.gz  \
+	&& tar xvfz LibreOffice_5.2.4_Linux_x86-64_deb_langpack_es.tar.gz  \
+	&& tar xvfz LibreOffice_5.2.4_Linux_x86-64_deb_sdk.tar.gz  \
+	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb/DEBS/*.deb \
+	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_langpack_es/DEBS/*.deb \
+	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_helppack_es/*.deb \
+	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_sdk/DEBS/*.deb \
+	&& rm *.tar.gz \
+	&& rm -rf LibreOffice* \
 	&& rm -rf /var/lib/apt/lists/*
 
 #ENV LANG en_US.UTF-8  
 #ENV LANGUAGE en_US:en   
 #ENV LC_ALL en_US.UTF-8  
 
-ENTRYPOINT [ "libreoffice5.1" ]
+ENTRYPOINT [ "libreoffice5.2" ]
