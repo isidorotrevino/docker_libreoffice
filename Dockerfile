@@ -35,9 +35,10 @@ RUN apt-get update && apt-get install -y \
 	&& tar xvfz LibreOffice_5.2.4_Linux_x86-64_deb_helppack_es.tar.gz  \
 	&& tar xvfz LibreOffice_5.2.4_Linux_x86-64_deb_langpack_es.tar.gz  \
 	&& tar xvfz LibreOffice_5.2.4_Linux_x86-64_deb_sdk.tar.gz  \
+	&& ls -la \
 	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb/DEBS/*.deb \
 	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_langpack_es/DEBS/*.deb \
-	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_helppack_es/*.deb \
+	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_helppack_es/DEBS/*.deb \
 	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_sdk/DEBS/*.deb \
 	&& rm *.tar.gz \
 	&& rm -rf LibreOffice* \
