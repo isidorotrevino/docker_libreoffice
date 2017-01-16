@@ -11,4 +11,4 @@ docker run  -v $HOME/Documents:/home/libreoffice/Documents:rw \
             -e GDK_SCALE \
             -e GDK_DPI_SCALE \
             --name libreoffice \
-            vintec/libreoffice:v5.1.3
+            vintec/libreoffice:v5.2.4
