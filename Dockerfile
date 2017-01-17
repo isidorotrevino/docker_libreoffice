@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 	libfreetype6 \
 	libgtk-3-0 \
 	libgail-3-0 \
-	at-spi2-core \
+	at-spi2-core unzip \
 	&& cd /tmp \
 	&& locale-gen en_US.UTF-8   \
 	&& wget http://download.documentfoundation.org/libreoffice/stable/5.2.4/deb/x86_64/LibreOffice_5.2.4_Linux_x86-64_deb.tar.gz \
@@ -42,7 +42,20 @@ RUN apt-get update && apt-get install -y \
 	&& dpkg -i LibreOffice_5.2.4.2_Linux_x86-64_deb_sdk/DEBS/*.deb \
 	&& rm *.tar.gz \
 	&& rm -rf LibreOffice* \
->>>>>>> master
+	&& mkdir -p /usr/share/fonts/truetype/ \
+    && mkdir fonts \
+    && cd fonts \
+	&& wget https://github.com/adobe-fonts/source-sans-pro/archive/2.020R-ro/1.075R-it.tar.gz \
+	&& wget https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.tar.gz \
+	&& wget http://fontawesome.io/assets/font-awesome-4.7.0.zip \
+	&& wget http://www.myfontfree.com/download-adobe-garamond-pro-zip36913.htm --post-data="submit=Download" -O adobe-garamond-pro.zip \
+	&& tar xvfz 1.075R-it.tar.gz \ 
+	&& tar xvfz 1.050R-it.tar.gz \
+	&& unzip font-awesome-4.7.0.zip \
+	&& unzip adobe-garamond-pro.zip \
+	&& find . -name "*.ttf" -exec cp -v {} /usr/share/fonts/truetype/  \; \
+	&& find . -name "*.otf" -exec cp -v {} /usr/share/fonts/truetype/  \; \
+	&& fc-cache -fv \
 	&& rm -rf /var/lib/apt/lists/*
 
 #ENV LANG en_US.UTF-8  
